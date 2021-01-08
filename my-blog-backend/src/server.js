@@ -10,7 +10,9 @@ app.use(bodyParser.json());
 app.get('/api/articles/:name', (req, res) => {
   const articleName = req.params.name;
 
-  const client = await MongoClient.connect('mongodb://localhost:27017', { useNewUrlParser: true })
+  const client = await MongoClient.connect('mongodb://localhost:27017', { useNewUrlParser: true });
+  const db = client.db('my-blog');
+  
 })
 
 app.post('/api/articles/:name/upvote', (req, res) => {
