@@ -14,6 +14,7 @@ app.get('/api/articles/:name', (req, res) => {
   const db = client.db('my-blog');
 
   const articleInfo = await db.collection('articles').findOne({ name: articleName });
+  res.status(200).json(articleInfo);
   
 })
 
