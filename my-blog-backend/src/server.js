@@ -8,15 +8,18 @@ const app = express();
 app.use(bodyParser.json());
 
 app.get('/api/articles/:name', async (req, res) => {
-  const articleName = req.params.name;
+  try {
+    const articleName = req.params.name;
 
-  const client = await MongoClient.connect('mongodb://localhost:27017', { useNewUrlParser: true });
-  const db = client.db('my-blog');
+    const client = await MongoClient.connect('mongodb://localhost:27017', { useNewUrlParser: true });
+    const db = client.db('my-blog');
 
-  const articleInfo = await db.collection('articles').findOne({ name: articleName });
-  res.status(200).json(articleInfo);
+    const articleInfo = await db.collection('articles').findOne({ name: articleName });
+    res.status(200).json(articleInfo);
 
-  client.close();
+    client.close();
+  }
+
 })
 
 app.post('/api/articles/:name/upvote', (req, res) => {
