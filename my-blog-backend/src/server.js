@@ -7,7 +7,7 @@ const app = express();
 
 app.use(bodyParser.json());
 
-app.get('/api/articles/:name', (req, res) => {
+app.get('/api/articles/:name', async (req, res) => {
   const articleName = req.params.name;
 
   const client = await MongoClient.connect('mongodb://localhost:27017', { useNewUrlParser: true });
