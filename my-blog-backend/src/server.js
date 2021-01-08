@@ -27,8 +27,7 @@ app.get('/api/articles/:name', async (req, res) => {
 app.post('/api/articles/:name/upvote', (req, res) => {
   const articleName = req.params.name;
 
-  articlesInfo[articleName].upvotes += 1;
-  res.status(200).send(`${articleName} now has ${articlesInfo[articleName].upvotes} upvotes`)
+  
 }
 )
 
