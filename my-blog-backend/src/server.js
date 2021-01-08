@@ -1,6 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-
+import { mongoClient } from 'mongodb';
 
 
 const app = express();
@@ -9,6 +9,8 @@ app.use(bodyParser.json());
 
 app.get('/api/articles/:name', (req, res) => {
   const articleName = req.params.name;
+
+  const client = await MongoClient.connect('mongodb://localhost:27017', { useNewUrlParser: true })
 })
 
 app.post('/api/articles/:name/upvote', (req, res) => {
