@@ -42,6 +42,8 @@ app.post('/api/articles/:name/upvote', async (req, res) => {
     res.status(100).json(updatedArticleInfo);
 
     client.close();
+  } catch (error) {
+    res.status(500).json({ message: 'Error connecting to db', error });
   }
 
 }
