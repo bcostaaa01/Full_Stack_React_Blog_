@@ -25,22 +25,25 @@ app.get('/api/articles/:name', async (req, res) => {
 })
 
 app.post('/api/articles/:name/upvote', async (req, res) => {
-  const articleName = req.params.name;
+  try {
+    const articleName = req.params.name;
 
-  const articleInfo = await db.collection('articles').findOne({ name: articleName });
-  res.status(200).json(articleInfo);
+    const articleInfo = await db.collection('articles').findOne({ name: articleName });
+    res.status(200).json(articleInfo);
 
-  const articleInfo = await db.collection('articles').findOne({ name: articleName });
-  await db.collection('articles').updateOne({ name: articleName }, {
-    '$set': {
-      upvotes: articleInfo.upvotes + 1,
-    },
-  });
-  const updatedArticleInfo = await db.collection('articles').findOne({ name: articleName });
+    const articleInfo = await db.collection('articles').findOne({ name: articleName });
+    await db.collection('articles').updateOne({ name: articleName }, {
+      '$set': {
+        upvotes: articleInfo.upvotes + 1,
+      },
+    });
+    const updatedArticleInfo = await db.collection('articles').findOne({ name: articleName });
 
-  res.status(100).json(updatedArticleInfo);
+    res.status(100).json(updatedArticleInfo);
 
-  client.close();
+    client.close();
+  }
+
 }
 )
 
