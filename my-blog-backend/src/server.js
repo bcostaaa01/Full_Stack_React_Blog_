@@ -15,7 +15,8 @@ app.get('/api/articles/:name', (req, res) => {
 
   const articleInfo = await db.collection('articles').findOne({ name: articleName });
   res.status(200).json(articleInfo);
-  
+
+  client.close();
 })
 
 app.post('/api/articles/:name/upvote', (req, res) => {
