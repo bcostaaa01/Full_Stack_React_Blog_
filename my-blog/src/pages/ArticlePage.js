@@ -8,7 +8,7 @@ const ArticlePage = ({ match }) => {
     const name = match.params.name;
     const article = articleContent.find(article => article.name)
 
-    const [articleInfo, setArticleInfo] = useState({ upvotes: 0, comments: [] }); 
+    const [articleInfo, setArticleInfo] = useState({ upvotes: 0, comments: [] });
 
     if (!article) return <NotFoundPage />
 
@@ -18,7 +18,7 @@ const ArticlePage = ({ match }) => {
 
     <>
         <h1>{article.title}</h1>
-
+        <p>This post has been upvoted {articleInfo.upvotes} times</p>
         {
         article.content.map((paragraph, key) => (
         <p key={key}>
