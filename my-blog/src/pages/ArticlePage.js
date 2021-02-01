@@ -6,7 +6,7 @@ import articleContent from './article-content';
 
 const ArticlePage = ({ match }) => {
     const name = match.params.name;
-    const article = articleContent.find(article => article.name)
+    const article = articleContent.find(article => article.name);
 
     const [articleInfo, setArticleInfo] = useState({ upvotes: 0, comments: [] });
 
@@ -33,7 +33,7 @@ const ArticlePage = ({ match }) => {
         <p key={key}>
             {paragraph}
             </p>
-            ))}
+          ))};
             <h2>Other Articles:</h2>
             <ArticlesList articles={otherArticles} />
         </>
