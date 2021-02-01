@@ -31,13 +31,11 @@ const ArticlePage = ({ match }) => {
     <>
         <h1>{article.title}</h1>
         <UpvotesSection articleName={name} upvotes={articleInfo.upvotes} setArticleInfo={setArticleInfo} />
-        <p>This post has been upvoted {articleInfo.upvotes} times</p>
-        {
-        article.content.map((paragraph, key) => (
-        <p key={key}>
-            {paragraph}
-            </p>
-          ))};
+        {article.content.map((paragraph, key) => (
+            <p key={key}>{paragraph}</p>
+        ))}
+        <CommentsList comments={articleInfo.comments} />
+        <AddCommentForm articleName={name} setArticleInfo={setArticleInfo} />
             <h2>Other Articles:</h2>
             <ArticlesList articles={otherArticles} />
         </>
