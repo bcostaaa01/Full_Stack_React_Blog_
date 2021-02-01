@@ -30,6 +30,7 @@ const ArticlePage = ({ match }) => {
 
     <>
         <h1>{article.title}</h1>
+        <UpvotesSection articleName={name} upvotes={articleInfo.upvotes} setArticleInfo={setArticleInfo} />
         <p>This post has been upvoted {articleInfo.upvotes} times</p>
         {
         article.content.map((paragraph, key) => (
