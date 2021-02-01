@@ -1,4 +1,4 @@
-import ArticlesList from "./ArticlesListPage"
+import ArticlesList from "./ArticlesListPage";
 
 const articles = [
     {
